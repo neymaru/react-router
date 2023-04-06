@@ -44,7 +44,7 @@ export default function todo(state = initState, action) {
   switch (action.type) {
     case CREATE:
       return {
-        // ...state,
+        ...state,
         // todoList: state.todoList.concat({
         //   id: action.payload.id,
         //   text: action.payload.text,

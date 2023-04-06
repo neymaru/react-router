@@ -6,7 +6,6 @@ export default function TodoList() {
   const todoList = useSelector((state) => state.todo.todoList).filter(
     (el) => el.done === false,
   );
-
   const nextID = useSelector((state) => state.todo.nextID);
 
   const dispatch = useDispatch();
@@ -17,7 +16,7 @@ export default function TodoList() {
     <section>
       <h1>할 일 목록</h1>
       <div>
-        <input type="text" ref={inputRef} />{' '}
+        <input type="text" ref={inputRef} />
         <button
           onClick={() => {
             dispatch(create({ id: nextID, text: inputRef.current.value }));
