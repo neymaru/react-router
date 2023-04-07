@@ -161,7 +161,7 @@ const getData = async (req, res) => {
 const getCounts = async (req, res) => {
   try {
     const client = await mongoClient.connect();
-    const countDB = client.db('mbti').collection('data');
+    const countDB = client.db('mbti').collection('counts');
 
     const counts = await countDB.findOne({ id: 1 });
     res.status(200).json(counts);
@@ -175,7 +175,7 @@ const getCounts = async (req, res) => {
 const incCounts = async (req, res) => {
   try {
     const client = await mongoClient.connect();
-    const countDB = client.db('mbti').collection('data');
+    const countDB = client.db('mbti').collection('counts');
 
     await countDB.updateOne({ id: 1 }, { $inc: { counts: +1 } }); // count 값을 받아올 필요 없이 1만 증가시키면 되기 때문에 바로 await 걸고 명령만 내림
     res.status(200).json('방문자 수 업데이트 성공');

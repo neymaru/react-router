@@ -27,6 +27,7 @@ export default function Start() {
     const resMbtiData = await fetch('http://localhost:4000/data/getdata');
     if (resMbtiData.status === 200) {
       const mbtiData = await resMbtiData.json();
+      console.log(mbtiData);
       if (mbtiData[0]) dispatch(init(mbtiData[0]));
     } else {
       console.log(await resMbtiData.json());
@@ -36,6 +37,7 @@ export default function Start() {
     const resGetCounts = await fetch('http://localhost:4000/data/getcount');
     if (resGetCounts.status === 200) {
       const countData = await resGetCounts.json();
+      console.log(countData);
       setCounts((cur) => countData.counts);
     } else {
       console.log(await resGetCounts.json());

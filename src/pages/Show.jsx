@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import PinkButton from '../components/PinkButton';
@@ -32,6 +32,20 @@ export default function Show() {
   const result = useSelector((state) => state.mbti.mbtiResult);
   const explanation = useSelector((state) => state.mbti.explanation[result]);
   const dispatch = useDispatch();
+
+  const incCount = async () => {
+    const resIncCount = await fetch('http://localhost:4000/data/inccount', {
+      method: 'POST',
+    });
+    if (resIncCount.status === 200) {
+      console.log(await resIncCount.json());
+    } else {
+      console.log(await resIncCount.json());
+    }
+  };
+  useEffect(() => {
+    incCount();
+  }, []);
 
   return (
     <>
